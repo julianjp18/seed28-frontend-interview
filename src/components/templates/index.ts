@@ -1,4 +1,2 @@
-// Templates: layouts de página
-// Ej: DashboardLayout, ClassificationResultsLayout
-
-export {};
+// Templates — Bulltrack Pro
+export { ClassificationResultsLayout } from "./ClassificationResultsLayout/ClassificationResultsLayout";

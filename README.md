@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bulltrack Pro — Frontend
 
-## Getting Started
+Frontend del challenge Full-Stack **Bulltrack Pro** (Seed28). Next.js 14+ con App Router y Tailwind CSS.
 
-First, run the development server:
+## Requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+
+- npm (o yarn/pnpm)
+- Backend NestJS corriendo (ver `/backend`)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cómo ejecutar
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Instalar dependencias**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   npm install
+   ```
 
-## Learn More
+2. **Configurar variables de entorno**
 
-To learn more about Next.js, take a look at the following resources:
+   Copia `env.example` a `.env.local` y ajusta si hace falta:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   cp env.example .env.local
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   Por defecto usa `NEXT_PUBLIC_API_URL=http://localhost:3001` (backend NestJS).
 
-## Deploy on Vercel
+3. **Arrancar el servidor de desarrollo**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   Abre [http://localhost:3000](http://localhost:3000).
+
+## Estructura del proyecto
+
+- **`src/app`** — Rutas (App Router): `/`, `/login`, `/dashboard`
+- **`src/components`** — Atomic Design: `atoms`, `molecules`, `organisms`, `templates`
+- **`src/hooks`** — Hooks (ej. `useAuth`)
+- **`src/services`** — Llamadas a la API (auth, bulls)
+- **`src/types`** — Tipos TypeScript (bull, auth)
+- **`src/lib`** — Utilidades (ej. `cn`)
+
+## Usuario por defecto (challenge)
+
+- **Email:** `admin@seed28.com`
+- **Contraseña:** `seed28`
+
+## Scripts
+
+- `npm run dev` — Desarrollo
+- `npm run build` — Build de producción
+- `npm run start` — Servidor de producción
+- `npm run lint` — ESLint
+- `npm run test` — Tests (Jest)
+- `npm run storybook` — Storybook (puerto 6006)
+
+## Componentes (Atomic Design)
+
+- **Atoms:** `src/components/atoms/`
+- **Molecules:** `src/components/molecules/`
+- **Organisms:** `src/components/organisms/`
+- **Templates:** `src/components/templates/`
+- **Pages:** `src/components/pages/`
+
+Cada componente tiene: `*.types.ts`, `*.test.tsx`, `*.stories.tsx`, `*.md`.

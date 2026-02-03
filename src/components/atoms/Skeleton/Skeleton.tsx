@@ -1,8 +1,5 @@
 import { cn } from "@/lib/utils";
-
-interface SkeletonProps {
-  className?: string;
-}
+import type { SkeletonProps } from "./Skeleton.types";
 
 export function Skeleton({ className }: SkeletonProps) {
   return (

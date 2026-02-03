@@ -1,4 +1,7 @@
-// Organisms: secciones complejas de UI
-// Ej: SidebarFilters, BullTable, Pagination
-
-export {};
+// Organisms — Bulltrack Pro
+export { ActiveFiltersSidebar } from "./ActiveFiltersSidebar/ActiveFiltersSidebar";
+export { ProductiveFiltersSidebar } from "./ProductiveFiltersSidebar/ProductiveFiltersSidebar";
+export { SortingSidebar } from "./SortingSidebar/SortingSidebar";
+export { CurrentObjectiveSection } from "./CurrentObjectiveSection/CurrentObjectiveSection";
+export { MainContentHeader } from "./MainContentHeader/MainContentHeader";
+export { BullCard } from "./BullCard/BullCard";
