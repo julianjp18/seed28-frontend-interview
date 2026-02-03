@@ -5,8 +5,15 @@ import { cn } from "@/lib/utils";
 import { Icon } from "../Icon/Icon";
 import type { CheckboxProps } from "./Checkbox.types";
 
+const filterBoxClasses =
+  "size-6 rounded-lg border-[1.5px] border-[#36E27B] bg-transparent text-white transition-colors peer-checked:bg-[#36E27B] peer-checked:border-[#36E27B] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed";
+
+const cardBoxClasses =
+  "size-6 rounded-lg border-[1.5px] border-[#4E61F6] bg-transparent text-white transition-colors peer-checked:bg-[#4E61F6] peer-checked:border-[#4E61F6] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed";
+
 export function Checkbox({
   shape = "square",
+  variant = "default",
   label,
   checked,
   defaultChecked = false,
@@ -28,11 +35,15 @@ export function Checkbox({
     [isControlled, onChange]
   );
 
+  const isFilter = variant === "filter";
+  const isCard = variant === "card";
+
   return (
     <label
       htmlFor={inputId}
       className={cn(
-        "inline-flex cursor-pointer items-center gap-2 select-none",
+        "inline-flex cursor-pointer select-none items-center gap-2",
+        isFilter && "w-full flex-row-reverse justify-between",
         className
       )}
     >
@@ -51,15 +62,20 @@ export function Checkbox({
         />
         <span
           className={cn(
-            "flex items-center justify-center border-2 border-primary bg-transparent text-primary-foreground transition-colors",
-            "peer-checked:bg-primary peer-checked:border-primary",
+            "flex items-center justify-center transition-colors",
             "peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2",
-            "peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
-            shape === "square" && "size-5 rounded",
-            shape === "circle" && "size-5 rounded-full border-2"
+            variant === "filter" && shape === "square" && filterBoxClasses,
+            variant === "card" && shape === "square" && cardBoxClasses,
+            variant === "default" && "border-2 border-primary bg-transparent text-primary-foreground",
+            variant === "default" && "peer-checked:bg-primary peer-checked:border-primary",
+            variant === "default" && "peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
+            variant === "default" && shape === "square" && "size-5 rounded",
+            variant === "default" && shape === "circle" && "size-5 rounded-full border-2"
           )}
         >
-          {displayChecked && shape === "square" && <Icon name="checkmark" className="size-3" />}
+          {displayChecked && shape === "square" && (
+            <Icon name="checkmark" className={cn("size-3", (isFilter || isCard) && "text-white")} />
+          )}
           {displayChecked && shape === "circle" && (
             <span className="size-2 rounded-full bg-primary" />
           )}
@@ -68,7 +84,18 @@ export function Checkbox({
           )}
         </span>
       </span>
-      {label && <span className="text-sm text-foreground">{label}</span>}
+      {label && (
+        <span
+          className={cn(
+            "text-sm",
+            isFilter
+              ? "font-inter text-sm font-normal leading-6 text-white align-middle"
+              : "text-foreground"
+          )}
+        >
+          {label}
+        </span>
+      )}
     </label>
   );
 }

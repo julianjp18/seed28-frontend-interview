@@ -5,7 +5,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card px-4 py-3">
+      <header className="bg-card px-4 py-3">
         <h1 className="text-lg font-semibold text-foreground">
           Bulltrack Pro — Resultados de clasificación
         </h1>

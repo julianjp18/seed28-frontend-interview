@@ -9,7 +9,13 @@ export type TextVariant =
   | "caption"
   | "button";
 
-export type TextColor = "default" | "muted" | "inverse" | "primary";
+export type TextColor =
+  | "default"
+  | "muted"
+  | "inverse"
+  | "primary"
+  | "accent"   // #36E27B
+  | "dark";   // #2D2D2D
 
 export interface TextProps {
   children: ReactNode;

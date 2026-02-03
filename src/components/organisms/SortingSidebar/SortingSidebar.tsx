@@ -4,7 +4,7 @@ import { FilterDropdown } from "@/components/molecules";
 import type { SortingSidebarProps } from "./SortingSidebar.types";
 
 export function SortingSidebar({
-  title = "SORTING",
+  title = "ORDENAMIENTO",
   value,
   options,
   onChange,
@@ -12,11 +12,9 @@ export function SortingSidebar({
 }: SortingSidebarProps) {
   return (
     <div className={cn("space-y-3", className)}>
-      <Text variant="heading4" className="block text-foreground">
-        {title}
-      </Text>
       <FilterDropdown
-        label="Order"
+        variant="sidebar"
+        label="ORDENAMIENTO"
         value={value}
         options={options}
         onChange={onChange}

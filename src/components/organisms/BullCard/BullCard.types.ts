@@ -1,6 +1,11 @@
+import type { BullRadarChartDataPoint } from "@/components/molecules/BullRadarChart/BullRadarChart.types";
 import type { BullTagItem } from "@/components/molecules/BullTags/BullTags.types";
 
 export interface BullCardProps {
+  /** Checkbox seleccionable (sin label). Si es true, siempre se muestra; si no se pasa, se muestra cuando existe onCheckboxChange. */
+  showCheckbox?: boolean;
+  checkboxChecked?: boolean;
+  onCheckboxChange?: (checked: boolean) => void;
   /** Rank display (e.g. "#1") */
   rank?: string | number;
   imageSrc: string;
@@ -15,7 +20,9 @@ export interface BullCardProps {
   onViewDetails?: () => void;
   onToggleFavorite?: () => void;
   isFavorite?: boolean;
-  /** Show radar chart placeholder (no real chart data for now) */
-  showRadarPlaceholder?: boolean;
+  /** Mostrar gráfico radar (Recharts). Si es false no se renderiza. */
+  showRadarChart?: boolean;
+  /** Datos para el radar (5 criterios). Si no se pasa, el chart usa valores por defecto. */
+  radarData?: BullRadarChartDataPoint[];
   className?: string;
 }

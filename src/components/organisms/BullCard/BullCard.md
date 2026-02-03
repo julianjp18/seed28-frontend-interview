@@ -9,7 +9,7 @@ Organism: full bull result card with rank, image, name, subtitle, tags, Bull Sco
 - BullScoreIndicator
 - ScoreNumber
 - BullCardActions
-- (Radar chart: placeholder SVG for now)
+- BullRadarChart (Recharts)
 
 ## Props
 
@@ -27,5 +27,6 @@ Organism: full bull result card with rank, image, name, subtitle, tags, Bull Sco
 | onViewDetails | () => void | View details click |
 | onToggleFavorite | () => void | Favorite toggle |
 | isFavorite | boolean | Favorite state |
-| showRadarPlaceholder | boolean | Show radar area (default true) |
+| showRadarChart | boolean | Mostrar gráfico radar (default true) |
+| radarData | BullRadarChartDataPoint[] | Datos del radar (5 criterios). Opcional. |
 | className | string | Tailwind classes |

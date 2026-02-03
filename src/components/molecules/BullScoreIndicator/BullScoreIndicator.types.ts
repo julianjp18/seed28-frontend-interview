@@ -4,5 +4,7 @@ export interface BullScoreIndicatorProps {
   max?: number;
   /** Texto descriptivo (ej. "Top 1% de facilidad de parto") */
   description?: string;
+  /** Mostrar número del score a la derecha de la barra */
+  showScoreNumber?: boolean;
   className?: string;
 }

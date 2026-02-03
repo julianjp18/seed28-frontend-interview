@@ -18,8 +18,12 @@ export interface MainContentHeaderProps {
   searchPlaceholder?: string;
   searchValue?: string;
   onSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  /** Results count (e.g. "24 results") */
+  /** Results count (e.g. "24 results"). Si usas resultsCountNumber + resultsCountLabel se ignora. */
   resultsCount?: string;
+  /** Número del contador (se muestra en negrita) */
+  resultsCountNumber?: number | string;
+  /** Etiqueta del contador (e.g. "resultados") */
+  resultsCountLabel?: string;
   viewMode?: ViewMode;
   onViewModeChange?: (mode: ViewMode) => void;
   onExport?: () => void;

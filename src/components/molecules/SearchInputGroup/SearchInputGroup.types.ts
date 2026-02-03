@@ -1,4 +1,5 @@
 import type { InputHTMLAttributes } from "react";
+import type { ReactNode } from "react";
 
 export interface SearchInputGroupProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
   placeholder?: string;
@@ -6,6 +7,6 @@ export interface SearchInputGroupProps extends Omit<InputHTMLAttributes<HTMLInpu
   defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
-  /** Texto a la derecha (ej. "24 resultados") */
-  rightLabel?: string;
+  /** Texto o nodo a la derecha (ej. "24 resultados" o <><strong>24</strong> resultados</>) */
+  rightLabel?: ReactNode;
 }

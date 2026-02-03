@@ -8,7 +8,6 @@ export function ResultsToolbar({
   resultsCount,
   viewMode = "list",
   onViewModeChange,
-  onExport,
   className,
 }: ResultsToolbarProps) {
   return (
@@ -34,11 +33,6 @@ export function ResultsToolbar({
               aria-label="Vista cuadrícula"
             />
           </>
-        )}
-        {onExport && (
-          <Button variant="secondary" iconRight="download" onClick={onExport}>
-            Exportar
-          </Button>
         )}
       </div>
     </div>

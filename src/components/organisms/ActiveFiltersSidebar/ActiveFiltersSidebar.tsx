@@ -6,18 +6,24 @@ import { FilterCheckboxItem } from "@/components/molecules";
 import type { ActiveFiltersSidebarProps } from "./ActiveFiltersSidebar.types";
 
 export function ActiveFiltersSidebar({
-  title = "ACTIVE FILTERS",
-  subtitle = "Origin",
+  title = "FILTROS ACTIVOS",
+  subtitle = "Origen",
   options,
   onOptionChange,
   className,
 }: ActiveFiltersSidebarProps) {
   return (
-    <div className={cn("space-y-3", className)}>
-      <Text variant="heading4" className="block text-foreground">
+    <div className={cn("space-y-2", className)}>
+      <Text
+        variant="heading4"
+        className="mb-[26px] block font-inter text-sm font-medium uppercase leading-5 tracking-[0.04em] text-white"
+      >
         {title}
       </Text>
-      <Text variant="label" className="block text-muted-foreground">
+      <Text
+        variant="label"
+        className="block font-inter text-sm font-normal leading-5 text-white"
+      >
         {subtitle}
       </Text>
       <div className="space-y-2">

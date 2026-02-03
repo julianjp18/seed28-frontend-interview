@@ -13,7 +13,8 @@ export type IconName =
   | "chevronUp"
   | "arrowLeft"
   | "user"
-  | "logoB";
+  | "logoB"
+  | "cloudSync";
 
 export interface IconProps {
   name: IconName;

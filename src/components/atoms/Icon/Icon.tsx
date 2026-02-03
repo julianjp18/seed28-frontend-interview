@@ -57,7 +57,7 @@ const icons: Record<IconName, (className: string) => JSX.Element> = {
     </svg>
   ),
   heartFilled: (className) => (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" aria-hidden>
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden>
       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
     </svg>
   ),
@@ -92,6 +92,22 @@ const icons: Record<IconName, (className: string) => JSX.Element> = {
     <svg className={className} viewBox="0 0 32 32" fill="currentColor" aria-hidden>
       <rect width="32" height="32" rx="4" />
       <text x="16" y="21" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold" fontFamily="system-ui, sans-serif">B</text>
+    </svg>
+  ),
+  cloudSync: (className) => (
+    <svg className={className} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <g clipPath="url(#cloudSyncClip)">
+        <path d="M13.3333 11.7382C14.3291 11.3481 15.3333 10.4593 15.3333 8.66667C15.3333 6 13.1111 5.33334 12 5.33334C12 4 12 1.33334 7.99999 1.33334C3.99999 1.33334 3.99999 4 3.99999 5.33334C2.88888 5.33334 0.666656 6 0.666656 8.66667C0.666656 10.4593 1.67084 11.3481 2.66666 11.7382" />
+        <path d="M5.05315 12.9916L5.99596 13.9344C7.16753 15.106 9.06703 15.106 10.2386 13.9344" />
+        <path d="M5.289 14.6415L5.0533 12.9916L6.70322 13.2273L5.289 14.6415Z" />
+        <path d="M10.8648 11.2678L9.92201 10.3249C8.75044 9.15337 6.85094 9.15337 5.67937 10.3249" />
+        <path d="M10.6302 9.61783L10.866 11.2677L9.21604 11.032L10.6302 9.61783Z" />
+      </g>
+      <defs>
+        <clipPath id="cloudSyncClip">
+          <rect width="16" height="16" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   ),
 };

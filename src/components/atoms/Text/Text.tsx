@@ -16,6 +16,8 @@ const colorClasses: Record<TextProps["color"] & string, string> = {
   muted: "text-muted-foreground",
   inverse: "text-primary-foreground",
   primary: "text-primary",
+  accent: "text-[#36E27B]",
+  dark: "text-[#2D2D2D]",
 };
 
 export function Text({

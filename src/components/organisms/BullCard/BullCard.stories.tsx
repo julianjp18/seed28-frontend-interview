@@ -16,25 +16,45 @@ export default meta;
 
 type Story = StoryObj<typeof BullCard>;
 
+const defaultArgs = {
+  rank: 1,
+  imageSrc: "https://picsum.photos/64/64",
+  imageAlt: "Bull 992",
+  name: "Bull #992",
+  subtitle: "Angus . 36 months",
+  tags,
+  scoreValue: 0.9,
+  scoreDescription: "Top 1% ease of calving",
+  onViewDetails: () => {},
+  onToggleFavorite: () => {},
+  showCheckbox: true as const,
+  onCheckboxChange: () => {},
+};
+
 export const Default: Story = {
-  args: {
-    rank: 1,
-    imageSrc: "https://picsum.photos/64/64",
-    imageAlt: "Bull 992",
-    name: "Bull #992",
-    subtitle: "Angus . 36 months",
-    tags,
-    scoreValue: 0.9,
-    scoreDescription: "Top 1% ease of calving",
-    onViewDetails: () => {},
-    onToggleFavorite: () => {},
-  },
+  args: defaultArgs,
+  render: (args) => (
+    <BullCard
+      {...args}
+      showCheckbox={true}
+      onCheckboxChange={args.onCheckboxChange ?? (() => {})}
+    />
+  ),
 };
 
 export const Favorite: Story = {
   args: {
-    ...Default.args,
+    ...defaultArgs,
     isFavorite: true,
     onToggleFavorite: () => {},
+    showCheckbox: true,
+    onCheckboxChange: () => {},
   },
+  render: (args) => (
+    <BullCard
+      {...args}
+      showCheckbox={true}
+      onCheckboxChange={args.onCheckboxChange ?? (() => {})}
+    />
+  ),
 };

@@ -46,7 +46,12 @@ export interface ClassificationResultsPageProps {
   searchPlaceholder?: string;
   searchValue?: string;
   onSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /** Contador en formato texto (ej. "24 resultados"). Si usas resultsCountNumber + resultsCountLabel se ignora. */
   resultsCount?: string;
+  /** Número del contador (se muestra en negrita) */
+  resultsCountNumber?: number | string;
+  /** Etiqueta del contador (ej. "resultados") */
+  resultsCountLabel?: string;
   viewMode?: ViewMode;
   onViewModeChange?: (mode: ViewMode) => void;
   onExport?: () => void;

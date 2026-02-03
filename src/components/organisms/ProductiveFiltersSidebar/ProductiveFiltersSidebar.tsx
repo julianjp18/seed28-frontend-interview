@@ -6,7 +6,7 @@ import { FilterDropdown, ToggleFilter } from "@/components/molecules";
 import type { ProductiveFiltersSidebarProps } from "./ProductiveFiltersSidebar.types";
 
 export function ProductiveFiltersSidebar({
-  title = "PRODUCTIVE FILTERS",
+  title = "FILTROS PRODUCTIVOS",
   toggleLabel,
   toggleSubLabel,
   toggleChecked = false,
@@ -23,12 +23,14 @@ export function ProductiveFiltersSidebar({
         {title}
       </Text>
       <ToggleFilter
+        variant="sidebar"
         label={toggleLabel}
         subLabel={toggleSubLabel}
         checked={toggleChecked}
         onChange={onToggleChange}
       />
       <FilterDropdown
+        variant="sidebar"
         label={dropdownLabel}
         value={dropdownValue}
         options={dropdownOptions}

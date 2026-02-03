@@ -15,6 +15,8 @@ const variantClasses: Record<ButtonProps["variant"] & string, string> = {
     "bg-primary text-primary-foreground border border-primary",
   iconToggle:
     "p-2 border border-border rounded-lg transition-colors",
+  objective:
+    "border border-[#36E27B] bg-[#36E27B]/5 text-[#36E27B] hover:bg-[#36E27B]/40 [&_svg]:text-[#36E27B]",
 };
 
 const sizeClasses: Record<ButtonProps["size"] & string, string> = {

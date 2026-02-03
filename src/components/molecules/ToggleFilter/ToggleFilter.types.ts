@@ -1,3 +1,5 @@
+export type ToggleFilterVariant = "default" | "sidebar";
+
 export interface ToggleFilterProps {
   label: string;
   /** Subtexto opcional (ej. "Facilidad de parto") */
@@ -5,5 +7,6 @@ export interface ToggleFilterProps {
   checked?: boolean;
   onChange?: (checked: boolean) => void;
   "aria-label"?: string;
+  variant?: ToggleFilterVariant;
   className?: string;
 }

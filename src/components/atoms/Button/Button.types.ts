@@ -5,7 +5,8 @@ export type ButtonVariant =
   | "secondary"
   | "outline"
   | "filterSelected"
-  | "iconToggle";
+  | "iconToggle"
+  | "objective";
 
 export type ButtonSize = "sm" | "md" | "lg";
 

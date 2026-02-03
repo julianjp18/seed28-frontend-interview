@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ClassificationResultsPage } from "./ClassificationResultsPage";
 import { BullCard } from "@/components/organisms";
@@ -33,26 +34,88 @@ export default meta;
 
 type Story = StoryObj<typeof ClassificationResultsPage>;
 
+const defaultChildren = (
+  checked1: boolean,
+  setChecked1: (v: boolean) => void,
+  checked2: boolean,
+  setChecked2: (v: boolean) => void
+) => (
+  <div className="space-y-3">
+    <BullCard
+      showCheckbox
+      checkboxChecked={checked1}
+      onCheckboxChange={setChecked1}
+      rank={1}
+      imageSrc="https://picsum.photos/64/64"
+      imageAlt="Bull 992"
+      name="Bull #992"
+      subtitle="Angus . 36 months"
+      tags={[
+        { label: "Own", variant: "default" },
+        { label: "For heifer", variant: "success" },
+      ]}
+      scoreValue={0.9}
+      scoreDescription="Top 1% ease of calving"
+      onViewDetails={() => {}}
+      onToggleFavorite={() => {}}
+    />
+    <BullCard
+      showCheckbox
+      checkboxChecked={checked2}
+      onCheckboxChange={setChecked2}
+      rank={2}
+      imageSrc="https://picsum.photos/64/64?2"
+      imageAlt="Bull 845"
+      name="Bull #845"
+      subtitle="Angus . 42 months"
+      tags={[
+        { label: "Catalog", variant: "secondary" },
+        { label: "For cow", variant: "outline" },
+      ]}
+      scoreValue={0.85}
+      onViewDetails={() => {}}
+      onToggleFavorite={() => {}}
+      isFavorite
+    />
+  </div>
+);
+
 export const Default: Story = {
+  render: function DefaultStory(args) {
+    const [coatDropdownValue, setCoatDropdownValue] = useState("all");
+    const [sortValue, setSortValue] = useState("score-desc");
+    const [checked1, setChecked1] = useState(false);
+    const [checked2, setChecked2] = useState(false);
+    return (
+      <ClassificationResultsPage
+        {...args}
+        coatDropdownValue={coatDropdownValue}
+        onCoatDropdownChange={setCoatDropdownValue}
+        sortValue={sortValue}
+        onSortChange={setSortValue}
+      >
+        {defaultChildren(checked1, setChecked1, checked2, setChecked2)}
+      </ClassificationResultsPage>
+    );
+  },
   args: {
     locationLabel: "La soledad",
     originOptions,
-    productiveToggleLabel: "For heifer",
-    productiveToggleSubLabel: "Ease of calving",
+    productiveToggleLabel: "Para vaquillona",
+    productiveToggleSubLabel: "Facilidad de parto",
     productiveToggleChecked: true,
-    coatDropdownLabel: "Coat",
-    coatDropdownValue: "all",
+    coatDropdownLabel: "Pelaje",
     coatDropdownOptions: coatOptions,
-    sortValue: "score-desc",
     sortOptions,
     objectiveDescription:
-      "Maximize weight gain (weaning) while maintaining ease of calving.",
-    updatedAtLabel: "Data updated 2 min ago",
-    mainTitle: "Classification results",
+      "Maximizar la ganancia de peso (destete) manteniendo facilidad de parto.",
+    updatedAtLabel: "Datos actualizados hace 2 min",
+    mainTitle: "Resultados de clasificación",
     mainDescription:
-      "Results are ordered by Bulltrack Score reflecting your production objectives.",
-    searchPlaceholder: "Search by ear tag, name or ranch",
-    resultsCount: "24 results",
+      "Los resultados están ordenados por Bulltrack Score reflejando tus objetivos de producción.",
+    searchPlaceholder: "Buscar por etiqueta, nombre o rancho",
+    resultsCountNumber: 24,
+    resultsCountLabel: "resultados",
     onOriginOptionChange: () => {},
     onProductiveToggleChange: () => {},
     onCoatDropdownChange: () => {},
@@ -62,40 +125,6 @@ export const Default: Story = {
     onSearchChange: () => {},
     onViewModeChange: () => {},
     onExport: () => {},
-    children: (
-      <div className="space-y-3">
-        <BullCard
-          rank={1}
-          imageSrc="https://picsum.photos/64/64"
-          imageAlt="Bull 992"
-          name="Bull #992"
-          subtitle="Angus . 36 months"
-          tags={[
-            { label: "Own", variant: "default" },
-            { label: "For heifer", variant: "success" },
-          ]}
-          scoreValue={0.9}
-          scoreDescription="Top 1% ease of calving"
-          onViewDetails={() => {}}
-          onToggleFavorite={() => {}}
-        />
-        <BullCard
-          rank={2}
-          imageSrc="https://picsum.photos/64/64?2"
-          imageAlt="Bull 845"
-          name="Bull #845"
-          subtitle="Angus . 42 months"
-          tags={[
-            { label: "Catalog", variant: "secondary" },
-            { label: "For cow", variant: "outline" },
-          ]}
-          scoreValue={0.85}
-          onViewDetails={() => {}}
-          onToggleFavorite={() => {}}
-          isFavorite
-        />
-      </div>
-    ),
   },
 };
 

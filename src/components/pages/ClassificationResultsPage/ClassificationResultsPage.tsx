@@ -46,6 +46,8 @@ export function ClassificationResultsPage({
   searchValue,
   onSearchChange,
   resultsCount,
+  resultsCountNumber,
+  resultsCountLabel,
   viewMode = "list",
   onViewModeChange,
   onExport,
@@ -65,7 +67,14 @@ export function ClassificationResultsPage({
         />
       }
       sidebar={
-        <div className="flex flex-col gap-6">
+        <div
+          className={cn(
+            "flex flex-col gap-6",
+            "[&_.text-foreground]:text-white! [&_.text-muted-foreground]:text-white/80! [&_.text-primary]:text-white!",
+            "[&_select]:text-white! [&_select]:bg-transparent! [&_select]:border-transparent! [&_select]:focus:border-transparent! [&_select]:focus-visible:border-transparent!",
+            "[&_hr]:border-white/20"
+          )}
+        >
           <ActiveFiltersSidebar
             options={originOptions}
             onOptionChange={onOriginOptionChange}
@@ -81,7 +90,6 @@ export function ClassificationResultsPage({
             dropdownOptions={coatDropdownOptions}
             onDropdownChange={onCoatDropdownChange}
           />
-          <Divider />
           <SortingSidebar
             value={sortValue}
             options={sortOptions}
@@ -108,6 +116,8 @@ export function ClassificationResultsPage({
           searchValue={searchValue}
           onSearchChange={onSearchChange}
           resultsCount={resultsCount}
+          resultsCountNumber={resultsCountNumber}
+          resultsCountLabel={resultsCountLabel}
           viewMode={viewMode}
           onViewModeChange={onViewModeChange}
           onExport={onExport}

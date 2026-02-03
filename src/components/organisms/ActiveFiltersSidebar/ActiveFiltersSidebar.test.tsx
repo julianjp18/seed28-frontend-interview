@@ -3,10 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { ActiveFiltersSidebar } from "./ActiveFiltersSidebar";
 
 const options = [
-  { value: "all", label: "All" },
-  { value: "own", label: "Own bulls" },
-  { value: "catalog", label: "Catalog" },
-  { value: "favorites", label: "Favorites" },
+  { value: "all", label: "Todos" },
+  { value: "own", label: "Toros propios" },
+  { value: "catalog", label: "Catálogo" },
+  { value: "favorites", label: "Favoritos" },
 ];
 
 describe("ActiveFiltersSidebar", () => {

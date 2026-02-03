@@ -1,17 +1,20 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Text } from "@/components/atoms";
+import { AppImage, Checkbox, Divider, Text } from "@/components/atoms";
 import {
   BullCardInfo,
   BullTags,
   BullScoreIndicator,
-  ScoreNumber,
   BullCardActions,
+  BullRadarChart,
 } from "@/components/molecules";
 import type { BullCardProps } from "./BullCard.types";
 
 export function BullCard({
+  showCheckbox = true,
+  checkboxChecked,
+  onCheckboxChange,
   rank,
   imageSrc,
   imageAlt,
@@ -24,70 +27,72 @@ export function BullCard({
   onViewDetails,
   onToggleFavorite,
   isFavorite = false,
-  showRadarPlaceholder = true,
+  showRadarChart = true,
+  radarData,
   className,
 }: BullCardProps) {
+
   return (
     <article
       className={cn(
-        "flex flex-col gap-4 rounded-lg border border-border bg-card p-4 sm:flex-row sm:items-stretch sm:gap-6",
+        "flex h-[192px] w-full flex-row items-center gap-6 rounded-3xl bg-white p-6",
         className
       )}
     >
-      <div className="flex flex-1 flex-col gap-3 sm:min-w-0">
-        <div className="flex items-start gap-3">
-          {rank !== undefined && (
-            <Text
-              variant="heading2"
-              as="span"
-              className="shrink-0 font-bold text-foreground"
-            >
-              #{typeof rank === "number" ? rank : rank}
-            </Text>
-          )}
-          <div className="min-w-0 flex-1">
-            <BullCardInfo
-              imageSrc={imageSrc}
-              imageAlt={imageAlt}
-              name={name}
-              subtitle={subtitle}
-            />
-            <BullTags tags={tags} className="mt-2" />
-          </div>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-          <div className="flex-1 space-y-1">
-            <BullScoreIndicator
-              value={scoreValue}
-              max={scoreMax}
-              description={scoreDescription}
-            />
-            <ScoreNumber value={scoreValue} />
-          </div>
-          {showRadarPlaceholder && (
-            <div
-              className="flex size-20 shrink-0 items-center justify-center rounded-lg border border-border bg-muted/50 sm:size-24"
-              aria-hidden
-            >
-              <svg
-                className="size-10 text-muted-foreground sm:size-12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-              </svg>
-            </div>
-          )}
-          <BullCardActions
-            onViewDetails={onViewDetails}
-            onToggleFavorite={onToggleFavorite}
-            isFavorite={isFavorite}
+      {showCheckbox && (
+        <div className="flex shrink-0 items-center justify-center">
+          <Checkbox
+            variant="card"
+            shape="square"
+            checked={checkboxChecked}
+            onChange={(e) => onCheckboxChange?.(e.target.checked)}
+            className="shrink-0"
+            aria-label="Seleccionar"
           />
         </div>
+      )}
+      {rank !== undefined && (
+        <Text
+          as="span"
+          variant="heading2"
+          className="shrink-0 font-inter text-[32px] font-semibold leading-5 text-[#394D41] align-middle"
+        >
+          #{typeof rank === "number" ? rank : rank}
+        </Text>
+      )}
+      <div className="flex min-w-0 flex-1 items-center gap-3">
+        <AppImage
+          src={imageSrc}
+          alt={imageAlt}
+          rounded="md"
+          className="size-16 shrink-0 object-cover"
+        />
+        <div className="flex min-w-0 flex-col gap-4">
+          <BullCardInfo
+            name={name}
+            subtitle={subtitle}
+            showImage={false}
+          />
+          <BullTags tags={tags} />
+        </div>
       </div>
+      <Divider orientation="vertical" className="shrink-0 self-stretch border-border" />
+      <div className="flex min-w-0 flex-1 items-center gap-4">
+        <BullScoreIndicator
+          value={scoreValue}
+          max={scoreMax}
+          description={scoreDescription}
+          showScoreNumber
+        />
+        {showRadarChart && <BullRadarChart data={radarData} />}
+      </div>
+      <Divider orientation="vertical" className="shrink-0 self-stretch border-border" />
+      <BullCardActions
+        onViewDetails={onViewDetails}
+        onToggleFavorite={onToggleFavorite}
+        isFavorite={isFavorite}
+        className="shrink-0"
+      />
     </article>
   );
 }

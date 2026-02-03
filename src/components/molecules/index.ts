@@ -12,6 +12,7 @@ export { BullTags } from "./BullTags/BullTags";
 export { BullScoreIndicator } from "./BullScoreIndicator/BullScoreIndicator";
 export { ScoreNumber } from "./ScoreNumber/ScoreNumber";
 export { BullCardActions } from "./BullCardActions/BullCardActions";
+export { BullRadarChart } from "./BullRadarChart/BullRadarChart";
 export { LocationUserSelector } from "./LocationUserSelector/LocationUserSelector";
 export { RankingCriteriaLabel } from "./RankingCriteriaLabel/RankingCriteriaLabel";
 export { ObjectiveDescription } from "./ObjectiveDescription/ObjectiveDescription";
