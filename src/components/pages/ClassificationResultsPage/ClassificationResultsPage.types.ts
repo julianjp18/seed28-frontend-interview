@@ -10,6 +10,7 @@ export interface ClassificationResultsPageProps {
   locationAvatarSrc?: string | null;
   onLocationClick?: () => void;
   locationOpen?: boolean;
+  onLogout?: () => void;
 
   // Sidebar: active filters (origin)
   originOptions: OriginFilterOption[];

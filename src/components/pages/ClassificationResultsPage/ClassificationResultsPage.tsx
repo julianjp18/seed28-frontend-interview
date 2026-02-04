@@ -18,7 +18,8 @@ export function ClassificationResultsPage({
   locationLabel,
   locationAvatarSrc,
   onLocationClick,
-  locationOpen = false,
+  locationOpen,
+  onLogout,
   originOptions,
   onOriginOptionChange,
   productiveToggleLabel,
@@ -62,24 +63,22 @@ export function ClassificationResultsPage({
         <LocationUserSelector
           locationLabel={locationLabel}
           avatarSrc={locationAvatarSrc ?? undefined}
-          onClick={onLocationClick}
+          onClick={locationOpen !== undefined ? onLocationClick : undefined}
           isOpen={locationOpen}
+          onLogout={onLogout}
         />
       }
       sidebar={
         <div
           className={cn(
-            "flex flex-col gap-6",
-            "[&_.text-foreground]:text-white! [&_.text-muted-foreground]:text-white/80! [&_.text-primary]:text-white!",
-            "[&_select]:text-white! [&_select]:bg-transparent! [&_select]:border-transparent! [&_select]:focus:border-transparent! [&_select]:focus-visible:border-transparent!",
-            "[&_hr]:border-white/20"
+            "flex flex-col gap-3 lg:gap-6 w-51",
           )}
         >
           <ActiveFiltersSidebar
             options={originOptions}
             onOptionChange={onOriginOptionChange}
           />
-          <Divider />
+          <Divider width="0.5px" color="#FFFFFF" />
           <ProductiveFiltersSidebar
             toggleLabel={productiveToggleLabel}
             toggleSubLabel={productiveToggleSubLabel}
@@ -95,7 +94,7 @@ export function ClassificationResultsPage({
             options={sortOptions}
             onChange={onSortChange}
           />
-          <Divider />
+          <Divider width="0.5px" color="#FFFFFF" />
           <CurrentObjectiveSection
             description={objectiveDescription}
             onEditClick={onEditObjectiveClick}

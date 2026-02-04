@@ -14,7 +14,10 @@ export type IconName =
   | "arrowLeft"
   | "user"
   | "logoB"
-  | "cloudSync";
+  | "cloudSync"
+  | "filter"
+  | "close"
+  | "logout";
 
 export interface IconProps {
   name: IconName;

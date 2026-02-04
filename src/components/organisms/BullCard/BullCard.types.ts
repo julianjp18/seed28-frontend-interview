@@ -20,6 +20,8 @@ export interface BullCardProps {
   onViewDetails?: () => void;
   onToggleFavorite?: () => void;
   isFavorite?: boolean;
+  /** Estado de carga del botón favorito (deshabilita y muestra "Guardando…") */
+  favoriteLoading?: boolean;
   /** Mostrar gráfico radar (Recharts). Si es false no se renderiza. */
   showRadarChart?: boolean;
   /** Datos para el radar (5 criterios). Si no se pasa, el chart usa valores por defecto. */

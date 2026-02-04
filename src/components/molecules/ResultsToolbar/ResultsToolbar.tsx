@@ -22,13 +22,7 @@ export function ResultsToolbar({
             onClick={() => onViewModeChange("list")}
             iconLeft="list"
             aria-label="Vista lista"
-            className={cn(
-              toggleBtnBase,
-              "rounded-l-lg rounded-r-none",
-              viewMode === "list"
-                ? "bg-[#1C2620] text-white hover:bg-white hover:text-[#1C2620]"
-                : "bg-[#E6E6E6] text-[#1C2620] hover:bg-white"
-            )}
+            className={cn(toggleBtnBase, "rounded-l-lg rounded-r-none")}
           />
           <Button
             variant="iconToggle"
@@ -36,13 +30,7 @@ export function ResultsToolbar({
             onClick={() => onViewModeChange("grid")}
             iconLeft="grid"
             aria-label="Vista cuadrícula"
-            className={cn(
-              toggleBtnBase,
-              "rounded-l-none rounded-r-lg",
-              viewMode === "grid"
-                ? "bg-[#1C2620] text-white hover:bg-white hover:text-[#1C2620]"
-                : "bg-[#E6E6E6] text-[#1C2620] hover:bg-white"
-            )}
+            className={cn(toggleBtnBase, "rounded-l-none rounded-r-lg")}
           />
         </div>
       )}

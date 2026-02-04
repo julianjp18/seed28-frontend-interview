@@ -19,7 +19,7 @@ export function ProductiveFiltersSidebar({
 }: ProductiveFiltersSidebarProps) {
   return (
     <div className={cn("space-y-4", className)}>
-      <Text variant="heading4" className="block text-foreground">
+      <Text variant="heading4" color="white" className="block">
         {title}
       </Text>
       <ToggleFilter

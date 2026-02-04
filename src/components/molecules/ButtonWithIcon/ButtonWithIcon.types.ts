@@ -4,7 +4,7 @@ import type { IconName } from "@/components/atoms/Icon/Icon.types";
 export interface ButtonWithIconProps {
   children: string;
   onClick?: () => void;
-  /** Ícono a la izquierda (por defecto arrowLeft) */
+  /** Icon on the left (default arrowLeft) */
   iconLeft?: IconName;
   variant?: ButtonVariant;
   className?: string;

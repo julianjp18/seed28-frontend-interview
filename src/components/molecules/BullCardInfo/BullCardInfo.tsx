@@ -10,12 +10,17 @@ const textBlock = (
   <div className={cn("min-w-0", className)}>
     <Text
       variant="label"
+      color="dark"
       as="p"
-      className="truncate font-inter text-[24px] font-semibold text-[#2D2D2D]!"
+      className="truncate font-inter text-[24px] font-semibold"
     >
       {name}
     </Text>
-    <Text variant="caption" className="font-inter text-[16px] font-medium leading-5 text-[#2D2D2D]!">
+    <Text
+      variant="body"
+      color="dark"
+      className="font-inter text-[16px] font-medium leading-5"
+    >
       {subtitle}
     </Text>
   </div>

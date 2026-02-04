@@ -2,9 +2,13 @@ import type { InputHTMLAttributes } from "react";
 import type { IconName } from "../Icon/Icon.types";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
-  /** Mensaje de error (muestra borde/estilo de error) */
+  /** error message (shows border/error style) */
   error?: boolean;
-  /** Ícono a la izquierda (nombre para Icon) */
+  /** Icon on the left (name for Icon) */
   iconLeft?: IconName;
+  /** Icon on the right (name for Icon) */
+  iconRight?: IconName;
+  /** Clase aplicada al contenedor del icono derecho (ej. posicionamiento) */
+  iconRightClassName?: string;
   className?: string;
 }

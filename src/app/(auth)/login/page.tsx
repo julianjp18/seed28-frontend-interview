@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks";
+import { Skeleton } from "@/components/atoms";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,7 +32,8 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-sm rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="relative w-full max-w-sm rounded-lg border border-border bg-card p-6 shadow-sm"
+        aria-busy={loading}
       >
         <h1 className="mb-6 text-center text-2xl font-semibold text-foreground">
           Bulltrack Pro
@@ -39,34 +41,51 @@ export default function LoginPage() {
         <p className="mb-4 text-center text-sm text-muted-foreground">
           Inicia sesión para acceder al dashboard
         </p>
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-              required
-            />
+        {loading ? (
+          <div
+            className="space-y-4"
+            aria-hidden
+          >
+            <div className="space-y-4">
+              <Skeleton className="h-10 w-full rounded-md" />
+              <Skeleton className="h-10 w-full rounded-md" />
+            </div>
+            <Skeleton className="mt-6 h-10 w-full rounded-md" />
           </div>
-          <div>
-            <label htmlFor="password" className="mb-1 block text-sm font-medium">
-              Contraseña
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-              required
-            />
-          </div>
-        </div>
+        ) : (
+          <>
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="email" className="mb-1 block text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  required
+                  disabled={loading}
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="mb-1 block text-sm font-medium">
+                  Contraseña
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  required
+                  disabled={loading}
+                />
+              </div>
+            </div>
+          </>
+        )}
         {error && (
           <p className="mt-3 text-sm text-red-600" role="alert">
             {error}

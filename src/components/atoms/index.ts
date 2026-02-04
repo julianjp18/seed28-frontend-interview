@@ -11,3 +11,4 @@ export { Avatar } from "./Avatar/Avatar";
 export { Divider } from "./Divider/Divider";
 export { AppImage } from "./AppImage/AppImage";
 export { Skeleton } from "./Skeleton/Skeleton";
+export { Loader } from "./Loader/Loader";

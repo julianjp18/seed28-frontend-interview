@@ -66,7 +66,7 @@ export function FilterDropdown({
           aria-label={ariaLabel ?? label}
           aria-expanded={isOpen}
           className={cn(
-            "w-full appearance-none bg-transparent pr-8 text-sm",
+            "w-full appearance-none bg-transparent pr-6 text-sm",
             isSidebar
               ? "font-inter border-0 border-transparent py-2 text-white outline-none ring-0 [&_option]:bg-[#111714] [&_option]:text-white focus:border-transparent focus:outline-none focus:ring-0 focus-visible:border-transparent focus-visible:outline-none focus-visible:ring-0"
               : "rounded-lg border border-border px-3 py-2 text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"

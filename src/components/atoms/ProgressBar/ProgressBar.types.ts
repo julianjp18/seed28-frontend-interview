@@ -1,12 +1,12 @@
 export interface ProgressBarProps {
-  /** Valor actual (0 a max) */
+  /** Current value (0 to max) */
   value: number;
-  /** Valor máximo (por defecto 1 para decimales tipo 0.9) */
+  /** Maximum value (default 1 for decimal type 0.9) */
   max?: number;
-  /** Altura de la barra (clase Tailwind o número px) */
+  /** Height of the bar (Tailwind class or number px) */
   className?: string;
-  /** Clase para el track (fondo) */
+  /** Class for the track (background) */
   trackClassName?: string;
-  /** Clase para el fill (progreso) */
+  /** Class for the fill (progress) */
   fillClassName?: string;
 }

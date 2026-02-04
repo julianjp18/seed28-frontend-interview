@@ -5,7 +5,7 @@ export interface BullRadarChartDataPoint {
 }
 
 export interface BullRadarChartProps {
-  /** Datos para el radar (5 criterios típicamente). Si no se pasa, se usan valores por defecto. */
+  /** Data points for the radar (5 typically). If not passed, default values are used. */
   data?: BullRadarChartDataPoint[];
   className?: string;
 }

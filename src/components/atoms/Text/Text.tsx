@@ -18,6 +18,7 @@ const colorClasses: Record<TextProps["color"] & string, string> = {
   primary: "text-primary",
   accent: "text-[#36E27B]",
   dark: "text-[#2D2D2D]",
+  white: "text-white",
 };
 
 export function Text({
@@ -26,6 +27,7 @@ export function Text({
   color = "default",
   uppercase = false,
   className,
+  style,
   as: Component = "span",
 }: TextProps) {
   return (
@@ -36,6 +38,7 @@ export function Text({
         uppercase && "uppercase",
         className
       )}
+      style={style}
     >
       {children}
     </Component>

@@ -23,16 +23,21 @@ describe("Button", () => {
   it("applies primary variant by default", () => {
     render(<Button>Primary</Button>);
     const btn = screen.getByRole("button");
-    expect(btn).toHaveClass("bg-primary", "text-primary-foreground");
+    expect(btn).toHaveClass("bg-[#1C2620]", "text-white");
   });
 
   it("applies secondary variant", () => {
     render(<Button variant="secondary">Secondary</Button>);
-    expect(screen.getByRole("button")).toHaveClass("bg-muted");
+    expect(screen.getByRole("button")).toHaveClass("bg-[#E6E6E6]", "text-[#1C2620]");
+  });
+
+  it("applies highlight variant", () => {
+    render(<Button variant="highlight">Highlight</Button>);
+    expect(screen.getByRole("button")).toHaveClass("bg-[#36E27B]/10");
   });
 
   it("applies iconToggle active state", () => {
     render(<Button variant="iconToggle" active>Toggle</Button>);
-    expect(screen.getByRole("button")).toHaveClass("bg-primary", "text-primary-foreground");
+    expect(screen.getByRole("button")).toHaveClass("bg-[#1C2620]", "text-white");
   });
 });

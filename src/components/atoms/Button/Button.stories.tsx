@@ -8,7 +8,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary", "outline", "filterSelected", "iconToggle"],
+      options: ["primary", "secondary", "highlight", "outline", "filterSelected", "iconToggle"],
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
   },
@@ -24,6 +24,10 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: { children: "Editar criterios", variant: "secondary" },
+};
+
+export const Highlight: Story = {
+  args: { children: "Destacado", variant: "highlight" },
 };
 
 export const Outline: Story = {

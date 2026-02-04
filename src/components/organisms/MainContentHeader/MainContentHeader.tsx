@@ -52,24 +52,22 @@ export function MainContentHeader({
         />
         {onExport && (
           <Button
-            variant="secondary"
+            variant="primary"
             iconRight="download"
             onClick={onExport}
-            className="h-8 w-[115px] shrink-0 rounded-lg border-0 bg-[#1C2620] py-2 px-3 text-center font-inter text-xs font-semibold text-white hover:bg-[#1C2620]/90 [&_svg]:text-white"
+            className="h-8 w-[115px] shrink-0 rounded-lg py-2 px-3 text-center font-inter text-xs font-semibold"
           >
             Exportar
           </Button>
         )}
       </div>
-      {onCriteriaToggle && (
-        <RankingCriteriaLabel
-          expanded={criteriaExpanded}
-          onToggle={onCriteriaToggle}
-        />
-      )}
-      <div className="flex h-[88px] w-full flex-row items-center justify-between gap-6 rounded-lg bg-[#F1F1F1] p-4">
+      <RankingCriteriaLabel
+        expanded={criteriaExpanded}
+        onToggle={onCriteriaToggle}
+      />
+      <div className="flex min-h-[72px] sm:h-[88px] w-full flex-col gap-3 sm:flex-row sm:flex-nowrap sm:items-center sm:justify-between sm:gap-6 rounded-lg bg-[#F1F1F1] p-3 sm:p-4">
         {(searchPlaceholder !== undefined || (resultsCountNode != null && !onViewModeChange)) && (
-          <div className="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 max-w-[514px] justify-start">
+          <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 sm:max-w-[514px] justify-start">
             {searchPlaceholder !== undefined && (
               <SearchInputGroup
                 placeholder={searchPlaceholder}

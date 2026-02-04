@@ -17,3 +17,5 @@ export { LocationUserSelector } from "./LocationUserSelector/LocationUserSelecto
 export { RankingCriteriaLabel } from "./RankingCriteriaLabel/RankingCriteriaLabel";
 export { ObjectiveDescription } from "./ObjectiveDescription/ObjectiveDescription";
 export { ButtonWithIcon } from "./ButtonWithIcon/ButtonWithIcon";
+export { Drawer } from "./Drawer/Drawer";
+export { Modal } from "./Modal/Modal";

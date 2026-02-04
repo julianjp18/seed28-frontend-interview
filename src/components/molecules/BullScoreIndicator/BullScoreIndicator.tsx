@@ -32,7 +32,7 @@ export function BullScoreIndicator({
         className="w-full"
       />
       {description && (
-        <Text variant="caption" className="text-[#2D2D2D]!">
+        <Text variant="caption" color="dark">
           {description}
         </Text>
       )}

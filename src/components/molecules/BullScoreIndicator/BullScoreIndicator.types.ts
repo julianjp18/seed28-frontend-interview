@@ -1,10 +1,10 @@
 export interface BullScoreIndicatorProps {
-  /** Valor 0–1 o 0–100 según max */
+  /** Value 0–1 or 0–100 depending on max */
   value: number;
   max?: number;
-  /** Texto descriptivo (ej. "Top 1% de facilidad de parto") */
+  /** Descriptive text (e.g. "Top 1% of calving ease") */
   description?: string;
-  /** Mostrar número del score a la derecha de la barra */
+  /** Show score number to the right of the bar */
   showScoreNumber?: boolean;
   className?: string;
 }

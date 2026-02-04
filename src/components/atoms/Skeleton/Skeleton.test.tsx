@@ -4,13 +4,13 @@ import { Skeleton } from "./Skeleton";
 describe("Skeleton", () => {
   it("renders", () => {
     const { container } = render(<Skeleton />);
-    const el = container.querySelector(".animate-pulse");
+    const el = container.querySelector(".skeleton-pulse");
     expect(el).toBeInTheDocument();
   });
 
   it("applies className", () => {
     const { container } = render(<Skeleton className="h-8 w-24" />);
-    const el = container.querySelector(".animate-pulse");
+    const el = container.querySelector(".skeleton-pulse");
     expect(el).toHaveClass("h-8", "w-24");
   });
 

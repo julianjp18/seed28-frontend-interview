@@ -6,9 +6,11 @@ import type { ButtonProps } from "./Button.types";
 
 const variantClasses: Record<ButtonProps["variant"] & string, string> = {
   primary:
-    "bg-primary text-primary-foreground hover:bg-primary/90 border border-transparent",
+    "bg-[#1C2620] text-white hover:bg-[#1C2620]/90 border border-transparent",
   secondary:
-    "bg-muted text-foreground hover:bg-muted/80 border border-border",
+    "bg-[#E6E6E6] text-[#1C2620] hover:bg-[#E6E6E6]/80 border border-transparent",
+  highlight:
+    "bg-[#36E27B]/10 text-[#1C2620] hover:bg-[#36E27B]/20 border border-[#36E27B]/30 [&_svg]:text-[#36E27B]",
   outline:
     "bg-transparent border-2 border-primary text-primary hover:bg-primary/10",
   filterSelected:
@@ -46,8 +48,8 @@ export function Button({
         "inline-flex items-center justify-center gap-2 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
         variantClasses[variant],
         sizeClass,
-        variant === "iconToggle" && active && "bg-primary text-primary-foreground border-primary",
-        variant === "iconToggle" && !active && "bg-muted text-muted-foreground hover:bg-muted/80",
+        variant === "iconToggle" && active && "bg-[#1C2620] text-white border-[#1C2620] [&_svg]:text-white",
+        variant === "iconToggle" && !active && "bg-[#E6E6E6] text-[#1C2620] hover:bg-[#E6E6E6]/80 [&_svg]:text-[#1C2620]",
         className
       )}
       disabled={disabled}

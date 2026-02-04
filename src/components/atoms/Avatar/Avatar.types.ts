@@ -1,10 +1,10 @@
 export interface AvatarProps {
-  /** URL de la imagen (si no hay, se muestra fallback) */
+  /** Image URL (if no image, fallback is shown) */
   src?: string | null;
-  /** Texto alternativo (ej. iniciales) cuando no hay imagen */
+  /** Alternative text (e.g. initials) when no image is present */
   alt?: string;
-  /** Mostrar indicador de estado (punto verde) */
+  /** Show status indicator (green dot) */
   showStatus?: boolean;
-  /** Tamaño en clases Tailwind (ej. size-10) */
+  /** Size in Tailwind classes (e.g. size-10) */
   className?: string;
 }

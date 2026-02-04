@@ -8,32 +8,35 @@ export function BullCardActions({
   onViewDetails,
   onToggleFavorite,
   isFavorite = false,
+  favoriteLoading = false,
   className,
 }: BullCardActionsProps) {
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-2",
-        "[&_button]:size-10 [&_button]:border-0 [&_button]:bg-[#1C2620] [&_button]:text-white [&_button]:hover:bg-[#1C2620]/90 [&_button_svg]:text-white",
-        className
-      )}
-    >
+    <div className={cn("flex flex-col gap-2", className)}>
       {onViewDetails && (
         <Button
-          variant="iconToggle"
+          variant="primary"
           onClick={onViewDetails}
           iconLeft="eye"
           aria-label="Ver detalles"
+          className="size-10 border-0 p-0 [&_svg]:text-white"
         />
       )}
       {onToggleFavorite && (
         <Button
-          variant="iconToggle"
-          active={isFavorite}
+          variant="primary"
           onClick={onToggleFavorite}
+          disabled={favoriteLoading}
           iconLeft={isFavorite ? "heartFilled" : "heart"}
-          aria-label={isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}
+          aria-label={
+            favoriteLoading
+              ? "Guardando…"
+              : isFavorite
+                ? "Quitar de favoritos"
+                : "Añadir a favoritos"
+          }
           title={isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}
+          className="size-10 border-0 p-0 [&_svg]:text-white"
         />
       )}
     </div>

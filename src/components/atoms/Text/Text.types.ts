@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export type TextVariant =
   | "heading1"
@@ -15,7 +15,8 @@ export type TextColor =
   | "inverse"
   | "primary"
   | "accent"   // #36E27B
-  | "dark";   // #2D2D2D
+  | "dark"    // #2D2D2D
+  | "white";
 
 export interface TextProps {
   children: ReactNode;
@@ -23,5 +24,6 @@ export interface TextProps {
   color?: TextColor;
   uppercase?: boolean;
   className?: string;
+  style?: CSSProperties;
   as?: "span" | "p" | "h1" | "h2" | "h3" | "h4" | "label" | "div";
 }
