@@ -1,6 +1,6 @@
 /**
  * Tipos para el dominio Bull (Bulltrack Pro)
- * Alineados con la API del backend
+ * Alineados con la API del backend (nombres en inglés)
  */
 
 export type Origen = "propio" | "catalogo" | "favoritos";
@@ -8,26 +8,26 @@ export type Pelaje = "negro" | "colorado";
 export type Uso = "vaquillona" | "vaca";
 
 export interface BullStats {
-  crecimiento: number;
-  facilidad_parto: number;
-  reproduccion: number;
-  moderacion: number;
-  carcasa: number;
+  growth: number;
+  calvingEase: number;
+  reproduction: number;
+  moderation: number;
+  carcass: number;
 }
 
 export interface Bull {
   id: number;
-  caravana: string;
-  nombre: string;
-  uso: Uso;
-  origen: Origen;
-  pelaje: Pelaje;
-  raza: string;
-  edad_meses: number;
-  caracteristica_destacada: string | null;
-  bull_score: number;
+  earTag: string;
+  name: string;
+  useType: Uso;
+  origin: Origen;
+  coat: Pelaje;
+  breed: string;
+  ageMonths: number;
+  standoutFeature: string | null;
+  bullScore: number;
   stats: BullStats;
-  is_favorite?: boolean;
+  isFavorite?: boolean;
 }
 
 export interface PaginatedBulls {
@@ -42,8 +42,8 @@ export interface BullsQueryParams {
   page?: number;
   limit?: number;
   search?: string;
-  origen?: Origen;
-  para_vaquillona?: boolean;
-  pelaje?: Pelaje;
-  sort_score?: "asc" | "desc";
+  origin?: Origen;
+  forHeifer?: boolean;
+  coat?: Pelaje;
+  sortBy?: "asc" | "desc";
 }

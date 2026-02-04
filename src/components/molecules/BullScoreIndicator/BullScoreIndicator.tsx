@@ -22,7 +22,7 @@ export function BullScoreIndicator({
         {showScoreNumber && (
           <ScoreNumber
             value={value}
-            className="shrink-0 font-inter text-lg font-bold text-[#2D2D2D]"
+            className="shrink-0 font-inter text-2xl font-bold text-[#2D2D2D]"
           />
         )}
       </div>
@@ -30,10 +30,9 @@ export function BullScoreIndicator({
         value={value}
         max={max}
         className="w-full"
-        fillClassName="bg-[#5BB06C]"
       />
       {description && (
-        <Text variant="caption" className="text-[#2D2D2D]">
+        <Text variant="caption" className="text-[#2D2D2D]!">
           {description}
         </Text>
       )}

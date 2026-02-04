@@ -60,14 +60,14 @@ export function BullCard({
           #{typeof rank === "number" ? rank : rank}
         </Text>
       )}
-      <div className="flex min-w-0 flex-1 items-center gap-3">
+      <div className="flex min-w-0 items-center gap-3">
         <AppImage
           src={imageSrc}
           alt={imageAlt}
           rounded="md"
-          className="size-16 shrink-0 object-cover"
+          className="shrink-0 object-cover w-[83px] h-[72px]"
         />
-        <div className="flex min-w-0 flex-col gap-4">
+        <div className="flex min-w-0 flex-col gap-3">
           <BullCardInfo
             name={name}
             subtitle={subtitle}

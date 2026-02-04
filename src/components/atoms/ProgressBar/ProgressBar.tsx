@@ -16,11 +16,11 @@ export function ProgressBar({
       aria-valuenow={value}
       aria-valuemin={0}
       aria-valuemax={max}
-      className={cn("w-full overflow-hidden rounded-full bg-muted", className)}
+      className={cn("w-full overflow-hidden rounded-lg bg-[#F1F1F1]", trackClassName, className)}
     >
       <div
         className={cn(
-          "h-2 rounded-full bg-green-600 transition-[width]",
+          "h-[8.5px] rounded-lg bg-[#36E27B] transition-[width]",
           fillClassName
         )}
         style={{ width: `${percentage}%` }}

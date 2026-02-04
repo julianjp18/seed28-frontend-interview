@@ -1,13 +1,15 @@
 /**
- * Cliente API para el backend Bulltrack Pro (NestJS)
- * Base URL configurada via NEXT_PUBLIC_API_URL
+ * Cliente API para el frontend. Todas las peticiones van a la API de Next.js (same-origin).
+ * Flujo: pantalla -> hook -> service -> API Next.js -> Backend NestJS
  */
 
 const getBaseUrl = () => {
+  // En el navegador siempre llamamos a la API de Next.js (mismo origen)
   if (typeof window !== "undefined") {
-    return process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
+    return "";
   }
-  return process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
+  // En SSR (por si se usara) mismo origen
+  return "";
 };
 
 export async function apiFetch<T>(

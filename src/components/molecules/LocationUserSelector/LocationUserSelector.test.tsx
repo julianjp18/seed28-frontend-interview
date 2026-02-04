@@ -16,9 +16,7 @@ describe("LocationUserSelector", () => {
   });
 
   it("shows chevron up when isOpen", () => {
-    const { container } = render(
-      <LocationUserSelector locationLabel="La soledad" isOpen />
-    );
+    render(<LocationUserSelector locationLabel="La soledad" isOpen />);
     expect(screen.getByRole("button")).toHaveAttribute("aria-expanded", "true");
   });
 });

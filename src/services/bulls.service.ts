@@ -1,4 +1,4 @@
-import type { Bull, PaginatedBulls, BullsQueryParams } from "@/types/bull";
+import type { PaginatedBulls, BullsQueryParams } from "@/types/bull";
 import { apiFetch } from "./api";
 
 function buildQueryString(params: BullsQueryParams): string {
@@ -14,11 +14,17 @@ function buildQueryString(params: BullsQueryParams): string {
 
 export const bullsService = {
   getBulls: (params: BullsQueryParams, token: string) =>
-    apiFetch<PaginatedBulls>(`/bulls${buildQueryString(params)}`, { token }),
+    apiFetch<PaginatedBulls>(`/api/bulls${buildQueryString(params)}`, { token }),
 
-  toggleFavorite: (bullId: number, token: string) =>
-    apiFetch<{ is_favorite: boolean }>(`/bulls/${bullId}/favorite`, {
+  addFavorite: (bullId: number, token: string) =>
+    apiFetch<unknown>(`/api/bulls/${bullId}/favorite`, {
       method: "POST",
+      token,
+    }),
+
+  removeFavorite: (bullId: number, token: string) =>
+    apiFetch<unknown>(`/api/bulls/${bullId}/favorite`, {
+      method: "DELETE",
       token,
     }),
 };

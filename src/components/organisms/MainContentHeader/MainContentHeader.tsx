@@ -32,17 +32,18 @@ export function MainContentHeader({
 }: MainContentHeaderProps) {
   const resultsCountNode =
     resultsCountNumber !== undefined && resultsCountLabel !== undefined ? (
-      <>
-        <strong>{resultsCountNumber}</strong> {resultsCountLabel}
-      </>
+      <span className="font-inter text-[20px] text-[#2D2D2D]">
+        <span className="font-bold">{resultsCountNumber}</span>{" "}
+        <span className="font-normal">{resultsCountLabel}</span>
+      </span>
     ) : (
       resultsCount
     );
 
   return (
-    <div className={cn("space-y-4", className)}>
-      {updatedAtLabel && <DataUpdatedAt label={updatedAtLabel} />}
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+    <div className={cn("space-y-2", className)}>
+      {updatedAtLabel && <DataUpdatedAt className="mb-4" label={updatedAtLabel} />}
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4 mb-4">
         <SectionHeader
           title={title}
           description={description}
@@ -50,7 +51,12 @@ export function MainContentHeader({
           onInfoClick={onInfoClick}
         />
         {onExport && (
-          <Button variant="secondary" iconRight="download" onClick={onExport} className="shrink-0">
+          <Button
+            variant="secondary"
+            iconRight="download"
+            onClick={onExport}
+            className="h-8 w-[115px] shrink-0 rounded-lg border-0 bg-[#1C2620] py-2 px-3 text-center font-inter text-xs font-semibold text-white hover:bg-[#1C2620]/90 [&_svg]:text-white"
+          >
             Exportar
           </Button>
         )}
@@ -61,9 +67,9 @@ export function MainContentHeader({
           onToggle={onCriteriaToggle}
         />
       )}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex h-[88px] w-full flex-row items-center justify-between gap-6 rounded-lg bg-[#F1F1F1] p-4">
         {(searchPlaceholder !== undefined || (resultsCountNode != null && !onViewModeChange)) && (
-          <div className="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+          <div className="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 max-w-[514px] justify-start">
             {searchPlaceholder !== undefined && (
               <SearchInputGroup
                 placeholder={searchPlaceholder}
@@ -73,7 +79,7 @@ export function MainContentHeader({
                 className="min-w-0 flex-1"
               />
             )}
-            {searchPlaceholder === undefined && resultsCountNode != null && !onViewModeChange && (
+            {resultsCountNode != null && (
               <span className="text-sm font-medium text-foreground">
                 {resultsCountNode}
               </span>
@@ -82,7 +88,6 @@ export function MainContentHeader({
         )}
         {onViewModeChange && (
           <ResultsToolbar
-            resultsCount={resultsCountNode ?? ""}
             viewMode={viewMode}
             onViewModeChange={onViewModeChange}
           />

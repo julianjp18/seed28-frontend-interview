@@ -11,11 +11,11 @@ const textBlock = (
     <Text
       variant="label"
       as="p"
-      className="truncate font-inter font-semibold text-[#2D2D2D]"
+      className="truncate font-inter text-[24px] font-semibold text-[#2D2D2D]!"
     >
       {name}
     </Text>
-    <Text variant="caption" className="font-inter text-[#2D2D2D]">
+    <Text variant="caption" className="font-inter text-[16px] font-medium leading-5 text-[#2D2D2D]!">
       {subtitle}
     </Text>
   </div>

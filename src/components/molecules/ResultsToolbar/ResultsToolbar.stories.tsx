@@ -12,23 +12,19 @@ export default meta;
 type Story = StoryObj<typeof ResultsToolbar>;
 
 export const Default: Story = {
-  args: { resultsCount: "24 resultados", onExport: () => {}, onViewModeChange: () => {} },
+  args: { onViewModeChange: () => {} },
 };
 
 export const ListView: Story = {
   args: {
-    resultsCount: "24 resultados",
     viewMode: "list",
-    onExport: () => {},
     onViewModeChange: () => {},
   },
 };
 
 export const GridView: Story = {
   args: {
-    resultsCount: "7 resultados",
     viewMode: "grid",
-    onExport: () => {},
     onViewModeChange: () => {},
   },
 };

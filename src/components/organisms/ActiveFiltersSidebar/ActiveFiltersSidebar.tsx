@@ -33,6 +33,7 @@ export function ActiveFiltersSidebar({
             label={opt.label}
             checked={opt.checked}
             onChange={(checked) => onOptionChange?.(opt.value, checked)}
+            className="mx-auto"
           />
         ))}
       </div>

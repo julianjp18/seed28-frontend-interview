@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { authService } from "@/services/auth.service";
+import { useCallback, useEffect, useState } from "react";
+import { login as loginService } from "@/services/auth.service";
 import type { LoginCredentials, User } from "@/types/auth";
 
 const TOKEN_KEY = "bulltrack_token";
@@ -10,6 +10,23 @@ const USER_KEY = "bulltrack_user";
 export function useAuth() {
   const [token, setTokenState] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem(TOKEN_KEY);
+    const rawUser = localStorage.getItem(USER_KEY);
+    if (storedToken) {
+      setTokenState(storedToken);
+      if (rawUser) {
+        try {
+          setUser(JSON.parse(rawUser) as User);
+        } catch {
+          setUser(null);
+        }
+      }
+    }
+    setHydrated(true);
+  }, []);
 
   const setToken = useCallback((newToken: string | null, newUser: User | null) => {
     setTokenState(newToken);
@@ -27,7 +44,7 @@ export function useAuth() {
 
   const login = useCallback(
     async (credentials: LoginCredentials) => {
-      const res = await authService.login(credentials);
+      const res = await loginService(credentials);
       setToken(res.access_token, res.user);
       return res;
     },
@@ -63,5 +80,6 @@ export function useAuth() {
     getStoredToken,
     getStoredUser,
     isAuthenticated: !!token,
+    hydrated,
   };
 }

@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { IconName } from "../Icon/Icon.types";
 
 export type ButtonVariant =
   | "primary"
@@ -17,8 +18,8 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   /** Para variant iconToggle: activo = fondo oscuro e ícono claro */
   active?: boolean;
   /** Ícono a la izquierda (nombre para Icon) */
-  iconLeft?: string;
+  iconLeft?: IconName;
   /** Ícono a la derecha */
-  iconRight?: string;
+  iconRight?: IconName;
   className?: string;
 }

@@ -18,7 +18,7 @@ export function ClassificationResultsLayout({
         <div className="min-w-0 shrink-0">{topBarRight}</div>
       </header>
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row bg-[#111714]">
-        <aside className="w-full shrink-0 border-b border-border bg-[#111714] p-4 lg:w-72 lg:border-b-0 max-w-70.25">
+        <aside className="w-full shrink-0 border-b border-border bg-[#111714] p-4 lg:w-72 lg:border-b-0 max-w-[240px]">
           {sidebar}
         </aside>
         <main className="min-w-0 flex-1 bg-[#F7F7F7] rounded-tl-[2.5rem] rounded-tr-[2.5rem] p-4 xl:pt-6 xl:px-6 max-w-7xl">

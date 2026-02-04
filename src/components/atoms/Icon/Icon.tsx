@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import type { IconName, IconProps } from "./Icon.types";
 
-const icons: Record<IconName, (className: string) => JSX.Element> = {
+const icons: Record<IconName, (className: string) => ReactNode> = {
   checkmark: (className) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <polyline points="20 6 9 17 4 12" />

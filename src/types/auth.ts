@@ -9,13 +9,11 @@ export interface LoginCredentials {
 
 export interface AuthResponse {
   access_token: string;
-  user: {
-    id: number;
-    email: string;
-  };
+  user: User;
 }
 
 export interface User {
   id: number;
   email: string;
+  name?: string;
 }
