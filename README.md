@@ -116,3 +116,4 @@ Cada componente tiene: `*.types.ts`, `*.test.tsx`, `*.stories.tsx`, `*.md`.
 - **Estado global:** Introducir un store (Zustand, Jotai o Context + reducer) para filtros, criterios expandidos y preferencias de vista si se comparten entre rutas o se persisten.
 - **API y errores:** Tipar respuestas del backend de punta a punta; manejo de errores y reintentos en servicios; feedback claro (toasts o mensajes inline) en fallos de red o validación.
 - **Documentación:** Documentar en Storybook variantes y props de atoms/molecules; añadir guía de uso de diseño (cuándo usar cada variante de Button/Text) para nuevos desarrolladores.
+# seed28-frontend-interview
