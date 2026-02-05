@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { ClassificationResultsPage } from "@/components/pages";
-import { BullCard, BullCardSkeleton, BullDetailView } from "@/components/organisms";
+import { BullCard, BullCardGrid, BullCardSkeleton, BullDetailView } from "@/components/organisms";
 import { Loader } from "@/components/atoms";
 import { Modal } from "@/components/molecules";
 import { useAuth, useBulls } from "@/hooks";
@@ -31,6 +31,7 @@ export default function DashboardPage() {
   const [coat, setCoat] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
+  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
   const limit = 10;
 
   const [, setTick] = useState(0);
@@ -143,8 +144,8 @@ export default function DashboardPage() {
       }}
       resultsCountNumber={result?.total ?? 0}
       resultsCountLabel="resultados"
-      viewMode="list"
-      onViewModeChange={() => { }}
+      viewMode={viewMode}
+      onViewModeChange={(mode) => setViewMode(mode)}
       onExport={() => { }}
     >
       {checkingAuth ? (
@@ -185,26 +186,49 @@ export default function DashboardPage() {
           )}
           {result?.data && result.data.length > 0 && (
             <>
-              <div className="space-y-3" aria-busy={loading}>
-                {result.data.map((bull, index) => (
-                  <BullCard
-                    key={bull.id}
-                    showCheckbox={false}
-                    rank={(page - 1) * limit + index + 1}
-                    imageSrc={getBullPlaceholderImage(bull)}
-                    imageAlt={bull.name}
-                    name={bull.name}
-                    subtitle={`${bull.breed} . ${bull.ageMonths} meses`}
-                    tags={bullToTags(bull)}
-                    scoreValue={bull.bullScore}
-                    scoreMax={100}
-                    scoreDescription={bull.standoutFeature ?? undefined}
-                    onViewDetails={() => setSelectedBull(bull)}
-                    onToggleFavorite={() => handleToggleFavorite(bull.id, bull.isFavorite ?? false)}
-                    isFavorite={bull.isFavorite ?? false}
-                    favoriteLoading={togglingFavoriteId === bull.id}
-                  />
-                ))}
+              <div
+                className={viewMode === "grid" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" : "space-y-3"}
+                aria-busy={loading}
+              >
+                {result.data.map((bull, index) =>
+                  viewMode === "grid" ? (
+                    <BullCardGrid
+                      key={bull.id}
+                      showCheckbox={true}
+                      rank={(page - 1) * limit + index + 1}
+                      imageSrc={getBullPlaceholderImage(bull)}
+                      imageAlt={bull.name}
+                      name={bull.name}
+                      subtitle={`${bull.breed} . ${bull.ageMonths} meses`}
+                      tags={bullToTags(bull)}
+                      scoreValue={bull.bullScore}
+                      scoreMax={100}
+                      scoreDescription={bull.standoutFeature ?? undefined}
+                      onViewDetails={() => setSelectedBull(bull)}
+                      onToggleFavorite={() => handleToggleFavorite(bull.id, bull.isFavorite ?? false)}
+                      isFavorite={bull.isFavorite ?? false}
+                      favoriteLoading={togglingFavoriteId === bull.id}
+                    />
+                  ) : (
+                    <BullCard
+                      key={bull.id}
+                      showCheckbox={true}
+                      rank={(page - 1) * limit + index + 1}
+                      imageSrc={getBullPlaceholderImage(bull)}
+                      imageAlt={bull.name}
+                      name={bull.name}
+                      subtitle={`${bull.breed} . ${bull.ageMonths} meses`}
+                      tags={bullToTags(bull)}
+                      scoreValue={bull.bullScore}
+                      scoreMax={100}
+                      scoreDescription={bull.standoutFeature ?? undefined}
+                      onViewDetails={() => setSelectedBull(bull)}
+                      onToggleFavorite={() => handleToggleFavorite(bull.id, bull.isFavorite ?? false)}
+                      isFavorite={bull.isFavorite ?? false}
+                      favoriteLoading={togglingFavoriteId === bull.id}
+                    />
+                  )
+                )}
               </div>
               {result.total > limit && (
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3 border-t border-border pt-6">

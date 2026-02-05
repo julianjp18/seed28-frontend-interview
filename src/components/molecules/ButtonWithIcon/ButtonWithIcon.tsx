@@ -7,13 +7,15 @@ export function ButtonWithIcon({
   children,
   onClick,
   iconLeft = "arrowLeft",
+  iconRight,
   variant = "outline",
   className,
 }: ButtonWithIconProps) {
   return (
     <Button
       variant={variant}
-      iconLeft={iconLeft}
+      iconLeft={iconRight ? undefined : iconLeft}
+      iconRight={iconRight}
       onClick={onClick}
       className={className}
     >

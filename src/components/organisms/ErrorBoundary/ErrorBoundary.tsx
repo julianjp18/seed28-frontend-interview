@@ -1,17 +1,7 @@
 "use client";
 
 import React, { type ComponentType, type ReactNode } from "react";
-
-interface ErrorBoundaryProps {
-  children: ReactNode;
-  fallback?: ReactNode | ((error: Error, reset: () => void) => ReactNode);
-  onReset?: () => void;
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean;
-  error: Error | null;
-}
+import type { ErrorBoundaryProps, ErrorBoundaryState } from "./ErrorBoundary.types";
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -36,10 +26,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     if (this.state.hasError && this.state.error) {
       if (this.props.fallback) {
         return typeof this.props.fallback === "function"
-          ? (this.props.fallback as (error: Error, reset: () => void) => ReactNode)(
-              this.state.error,
-              this.handleReset
-            )
+          ? this.props.fallback(this.state.error, this.handleReset)
           : this.props.fallback;
       }
       return (

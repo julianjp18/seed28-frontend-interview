@@ -21,6 +21,7 @@ export function CurrentObjectiveSection({
       <ButtonWithIcon
         variant="objective"
         onClick={onEditClick}
+        iconLeft="arrowRight"
         className="h-10 max-w-[172px] rounded-xl py-3 px-4 font-inter text-sm font-semibold leading-4"
       >
         {editButtonLabel}

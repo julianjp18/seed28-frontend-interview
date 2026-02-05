@@ -1,4 +1,5 @@
 export interface BullCardActionsProps {
+  variant?: "list" | "grid";
   onViewDetails?: () => void;
   onToggleFavorite?: () => void;
   isFavorite?: boolean;

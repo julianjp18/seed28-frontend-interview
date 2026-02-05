@@ -48,8 +48,8 @@ export function Button({
         "inline-flex items-center justify-center gap-2 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
         variantClasses[variant],
         sizeClass,
-        variant === "iconToggle" && active && "bg-[#1C2620] text-white border-[#1C2620] [&_svg]:text-white",
-        variant === "iconToggle" && !active && "bg-[#E6E6E6] text-[#1C2620] hover:bg-[#E6E6E6]/80 [&_svg]:text-[#1C2620]",
+        variant === "iconToggle" && active && "bg-[#1C2620] text-white border-[#1C2620] [&_svg]:text-white [&_svg]:stroke-white",
+        variant === "iconToggle" && !active && "bg-[#E6E6E6] text-[#1C2620] border-[#E6E6E6] hover:bg-[#d0d0d0] [&_svg]:text-[#1C2620] [&_svg]:stroke-[#1C2620]",
         className
       )}
       disabled={disabled}

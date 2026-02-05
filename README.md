@@ -1,119 +1,145 @@
 # Bulltrack Pro — Frontend
 
-Frontend del challenge Full-Stack **Bulltrack Pro** (Seed28). Next.js 14+ con App Router y Tailwind CSS.
+Frontend for the Full-Stack **Bulltrack Pro** challenge (Seed28). Next.js 16 with App Router, React 19 and Tailwind CSS 4.
 
-## Requisitos
+## Demo
+
+Live demo: **[https://seed28-frontend-interview.onrender.com](https://seed28-frontend-interview.onrender.com)**
+
+Default credentials: `admin@seed28.com` / `seed28`
+
+## Requirements
 
 - Node.js 18+
-- npm (o yarn/pnpm)
-- Backend NestJS corriendo (ver `/backend`)
+- npm (or yarn/pnpm)
+- NestJS backend running (see `/backend`)
 
-## Cómo ejecutar
+## How to run
 
-1. **Instalar dependencias**
+1. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-2. **Configurar variables de entorno**
+2. **Configure environment variables**
 
-   Copia `env.example` a `.env.local` y ajusta si hace falta:
+   Copy `env.example` to `.env.local` and adjust if needed:
 
    ```bash
    cp env.example .env.local
    ```
 
-   Por defecto usa `NEXT_PUBLIC_API_URL=http://localhost:3001` (backend NestJS).
+   By default it uses `NEXT_PUBLIC_API_URL=http://localhost:3001` (NestJS backend).
 
-3. **Arrancar el servidor de desarrollo**
+3. **Start the development server**
 
    ```bash
    npm run dev
    ```
 
-   Abre [http://localhost:3000](http://localhost:3000).
+   Open [http://localhost:3000](http://localhost:3000).
 
-## Estructura del proyecto
+## Project structure
 
-- **`src/app`** — Rutas (App Router): `/`, `/login`, `/dashboard`
-- **`src/components`** — Atomic Design: `atoms`, `molecules`, `organisms`, `templates`
-- **`src/hooks`** — Hooks (ej. `useAuth`)
-- **`src/services`** — Llamadas a la API (auth, bulls)
-- **`src/types`** — Tipos TypeScript (bull, auth)
-- **`src/lib`** — Utilidades (ej. `cn`)
+```
+src/
+├── app/                    # App Router
+│   ├── (auth)/login/       # Login page
+│   ├── (dashboard)/        # Dashboard layout + page
+│   ├── api/                # API routes (proxy to backend: auth/login, bulls/*)
+│   ├── layout.tsx
+│   ├── page.tsx            # Home (redirects)
+│   ├── ErrorBoundaryWrapper.tsx
+│   └── globals.css
+├── assets/                 # SVGs (arrow, Avatar, cloud-sync, download)
+├── components/             # Atomic Design
+│   ├── atoms/
+│   ├── molecules/
+│   ├── organisms/
+│   ├── templates/
+│   └── pages/
+├── constants/             # COAT_OPTIONS, SORT_OPTIONS, LOREMFLICKR_BASE, UPDATED_AT_REFRESH_MS
+├── hooks/                  # useAuth, useBulls
+├── lib/                    # bull-utils, utils (cn)
+├── services/               # auth.service, bulls.service, api
+└── types/                  # auth, bull
+```
 
-## Usuario por defecto (challenge)
+## Routes
+
+- **`/`** — Home (redirects to login or dashboard)
+- **`/login`** — Login form
+- **`/dashboard`** — Classification results (list/grid of bulls, filters, search, favorites)
+
+API routes under `/api` proxy to the backend (e.g. `/api/auth/login`, `/api/bulls`).
+
+## Components (Atomic Design)
+
+### Atoms (`src/components/atoms/`)
+
+AppImage, Avatar, Badge, Button, Checkbox, Divider, Icon, Input, Loader, ProgressBar, Skeleton, Text, ToggleSwitch.
+
+### Molecules (`src/components/molecules/`)
+
+BullCardActions, BullCardInfo, BullRadarChart, BullScoreIndicator, BullTags, ButtonWithIcon, DataUpdatedAt, Drawer, FilterCheckboxItem, FilterDropdown, HeaderBar, LocationUserSelector, Modal, ObjectiveDescription, RankingCriteriaLabel, ResultsToolbar, ScoreNumber, SearchInputGroup, SectionHeader, ToggleFilter.
+
+### Organisms (`src/components/organisms/`)
+
+ActiveFiltersSidebar, BullCard, BullCardGrid, BullCardSkeleton, BullDetailView, CurrentObjectiveSection, ErrorBoundary, MainContentHeader, ProductiveFiltersSidebar, SortingSidebar.
+
+### Templates (`src/components/templates/`)
+
+ClassificationResultsLayout.
+
+### Pages (`src/components/pages/`)
+
+ClassificationResultsPage.
+
+Many components have `*.types.ts`, `*.test.tsx`, `*.stories.tsx` and `*.md`; some (e.g. Loader, BullRadarChart, Drawer, Modal) only have implementation and types.
+
+## Default user (challenge)
 
 - **Email:** `admin@seed28.com`
-- **Contraseña:** `seed28`
+- **Password:** `seed28`
 
 ## Scripts
 
-- `npm run dev` — Desarrollo
-- `npm run build` — Build de producción
-- `npm run start` — Servidor de producción
-- `npm run lint` — ESLint
-- `npm run test` — Tests (Jest)
-- `npm run storybook` — Storybook (puerto 6006)
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Production server |
+| `npm run lint` | ESLint |
+| `npm run test` | Jest |
+| `npm run test:watch` | Jest watch mode |
+| `npm run storybook` | Storybook (port 6006) |
+| `npm run build-storybook` | Build Storybook static |
 
-## Componentes (Atomic Design)
+## Stack
 
-- **Atoms:** `src/components/atoms/`
-- **Molecules:** `src/components/molecules/`
-- **Organisms:** `src/components/organisms/`
-- **Templates:** `src/components/templates/`
-- **Pages:** `src/components/pages/`
-
-Cada componente tiene: `*.types.ts`, `*.test.tsx`, `*.stories.tsx`, `*.md`.
-
----
-
-## Arquitectura
-
-### Stack
-
-- **Framework:** Next.js 14+ (App Router)
-- **Estilos:** Tailwind CSS
-- **Tipado:** TypeScript
+- **Framework:** Next.js 16 (App Router)
+- **UI:** React 19
+- **Styling:** Tailwind CSS 4
+- **Charts:** Recharts
+- **Typing:** TypeScript
 - **Testing:** Jest + React Testing Library
-- **Documentación de componentes:** Storybook
+- **Component docs:** Storybook 8 (Vite)
 
-### Diseño de componentes (Atomic Design)
+## Architecture
 
-- **Atoms:** Elementos base reutilizables (`Button`, `Text`, `Input`, `Icon`, `Divider`, etc.). Definen variantes (ej. `Button`: primary, secondary, highlight) y tokens de diseño (colores, tipografía).
-- **Molecules:** Composición de atoms con lógica acotada (`SearchInputGroup`, `RankingCriteriaLabel`, `BullCardInfo`, etc.).
-- **Organisms:** Bloques de UI que orquestan molecules y atoms (`MainContentHeader`, `BullCard`, `ProductiveFiltersSidebar`, etc.).
-- **Templates:** Layouts por pantalla (`ClassificationResultsLayout`).
-- **Pages:** Páginas que reciben props y ensamblan templates y organisms (`ClassificationResultsPage`). La lógica de datos y estado vive en las rutas de `app/` (ej. `dashboard/page.tsx`), que renderizan estas pages.
+- **Routes (`app/`):** State (useState, API data), services, pass props to pages. Layout wraps children with `ErrorBoundaryWrapper` (ErrorBoundary from organisms).
+- **Hooks:** `useAuth` (session, logout), `useBulls` (paginated list, filters, refetch).
+- **Services:** HTTP to backend via `NEXT_PUBLIC_API_URL`; token from `useAuth`. API routes in `app/api/` proxy to backend.
+- **Pages:** Presentational; receive data via props. Data/state in dashboard page, which renders `ClassificationResultsPage` and bull list (BullCard or BullCardGrid by viewMode).
+- **Design:** Primary `#1C2620`, secondary `#E6E6E6`, highlight `#36E27B`. Inter font. Atoms expose variants (Button, Text, etc.).
 
-### Flujo de datos
+## Future improvements
 
-- **Rutas (`app/`):** Contienen el estado (useState, datos de API), llaman a servicios y pasan props a las pages.
-- **Services:** Llamadas HTTP al backend (auth, bulls). Token y base URL vía env.
-- **Hooks:** Lógica reutilizable (ej. `useAuth` para sesión y logout).
-- **Pages:** Componentes presentacionales que reciben toda la data por props; no hacen fetch directo.
-
-### Estilos y diseño
-
-- **Tailwind:** Utilidades + clases arbitrarias para valores fijos (ej. `#1C2620`, `#36E27B`). Componentes como `Text` y `Button` exponen variantes/colores para no repetir hex en toda la app.
-- **Tipografía:** Inter como fuente principal (`font-inter`). El atom `Text` tiene variantes (heading1, body, label, etc.) y colores (default, dark, white, accent).
-- **Colores de referencia:** primary `#1C2620`, secondary `#E6E6E6`, highlight `#36E27B` (10% opacidad en fondos), texto oscuro `#2D2D2D`.
-
-### Ejemplo de estilos por componente
-
-- **RankingCriteriaLabel (título “Criterios del ranking”):** `font-family: Inter`, `font-weight: 700`, `font-size: 16px`, `line-height: 20px`, `color: #2D2D2D` — aplicado vía `Text` con `variant="body"`, `color="dark"` y `className="font-inter text-base font-bold leading-5"`.
-
----
-
-## Future Improvements
-
-- **Internacionalización (i18n):** Centralizar textos en archivos de idioma (es/en) y usar una lib (ej. next-intl) para rutas y componentes; hoy muchos strings están hardcodeados.
-- **Design tokens:** Mover colores y tipografía a variables CSS o tema Tailwind (ej. `--color-primary`, `--font-body`) y consumirlos desde atoms para facilitar temas y consistencia.
-- **Tests:** Aumentar cobertura E2E (Playwright/Cypress) para flujos críticos (login, listado, favoritos, acordeón de criterios); mantener y ampliar tests unitarios de componentes y hooks.
-- **Accesibilidad:** Revisar contraste (WCAG), foco visible en acordeones y botones, roles ARIA y labels en iconos; asegurar navegación por teclado en modales y sidebars.
-- **Performance:** Lazy load de rutas y componentes pesados (modales, detalle de toro); optimizar listados con virtualización si crece el número de cards; cache/estado global (React Query o similar) para datos de toros y filtros.
-- **Estado global:** Introducir un store (Zustand, Jotai o Context + reducer) para filtros, criterios expandidos y preferencias de vista si se comparten entre rutas o se persisten.
-- **API y errores:** Tipar respuestas del backend de punta a punta; manejo de errores y reintentos en servicios; feedback claro (toasts o mensajes inline) en fallos de red o validación.
-- **Documentación:** Documentar en Storybook variantes y props de atoms/molecules; añadir guía de uso de diseño (cuándo usar cada variante de Button/Text) para nuevos desarrolladores.
-# seed28-frontend-interview
+- **Internationalization (i18n):** Centralize copy in language files (es/en) and use a lib (e.g. next-intl) for routes and components; many strings are currently hardcoded.
+- **Design tokens:** Move colors and typography to CSS variables or Tailwind theme (e.g. `--color-primary`, `--font-body`) and consume them from atoms for easier theming and consistency.
+- **Tests:** Increase E2E coverage (Playwright/Cypress) for critical flows (login, list, favorites, criteria accordion); maintain and expand unit tests for components and hooks.
+- **Accessibility:** Review contrast (WCAG), visible focus on accordions and buttons, ARIA roles and labels on icons; ensure keyboard navigation in modals and sidebars.
+- **Performance:** Lazy load heavy routes and components (modals, bull detail); optimize lists with virtualization if card count grows; cache/global state (React Query or similar) for bulls and filters.
+- **Global state:** Introduce a store (Zustand, Jotai or Context + reducer) for filters, expanded criteria and view preferences when shared across routes or persisted.
+- **API and errors:** Type backend responses end-to-end; error handling and retries in services; clear feedback (toasts or inline messages) on network or validation failures.

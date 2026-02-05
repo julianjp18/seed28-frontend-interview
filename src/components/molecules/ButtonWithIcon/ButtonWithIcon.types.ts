@@ -6,6 +6,8 @@ export interface ButtonWithIconProps {
   onClick?: () => void;
   /** Icon on the left (default arrowLeft) */
   iconLeft?: IconName;
+  /** Icon on the right */
+  iconRight?: IconName;
   variant?: ButtonVariant;
   className?: string;
 }

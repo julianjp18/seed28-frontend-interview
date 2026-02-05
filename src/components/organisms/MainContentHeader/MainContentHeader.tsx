@@ -52,10 +52,9 @@ export function MainContentHeader({
         />
         {onExport && (
           <Button
-            variant="primary"
             iconRight="download"
             onClick={onExport}
-            className="h-8 w-[115px] shrink-0 rounded-lg py-2 px-3 text-center font-inter text-xs font-semibold"
+            className="h-8 w-[115px] shrink-0 gap-[2px]! rounded-lg py-2 px-3 text-center font-inter text-xs font-semibold [&_svg]:size-6"
           >
             Exportar
           </Button>

@@ -12,6 +12,7 @@ export type IconName =
   | "chevronDown"
   | "chevronUp"
   | "arrowLeft"
+  | "arrowRight"
   | "user"
   | "logoB"
   | "cloudSync"

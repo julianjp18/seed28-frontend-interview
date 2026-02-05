@@ -1,6 +1,6 @@
 "use client";
 
-import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { ErrorBoundary } from "@/components/organisms";
 import type { ReactNode } from "react";
 
 export function ErrorBoundaryWrapper({ children }: { children: ReactNode }) {

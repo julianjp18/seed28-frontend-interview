@@ -5,6 +5,7 @@ import { Button } from "@/components/atoms";
 import type { BullCardActionsProps } from "./BullCardActions.types";
 
 export function BullCardActions({
+  variant = "list",
   onViewDetails,
   onToggleFavorite,
   isFavorite = false,
@@ -12,7 +13,7 @@ export function BullCardActions({
   className,
 }: BullCardActionsProps) {
   return (
-    <div className={cn("flex flex-col gap-2", className)}>
+    <div className={cn("flex", variant === "grid" ? "w-full flex-row items-center justify-center gap-4" : "flex-col gap-2", className)}>
       {onViewDetails && (
         <Button
           variant="primary"

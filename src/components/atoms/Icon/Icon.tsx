@@ -15,10 +15,9 @@ const icons: Record<IconName, (className: string) => ReactNode> = {
     </svg>
   ),
   download: (className) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
+    <svg className={className} viewBox="0 0 22 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M6 20L18 20" />
+      <path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" />
     </svg>
   ),
   list: (className) => (
@@ -81,6 +80,11 @@ const icons: Record<IconName, (className: string) => ReactNode> = {
   arrowLeft: (className) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="m12 19-7-7 7-7" />
+    </svg>
+  ),
+  arrowRight: (className) => (
+    <svg className={className} viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M13.25 6.75H0.75M0.75 6.75L6.75 0.75M0.75 6.75L6.75 12.75" />
     </svg>
   ),
   user: (className) => (
