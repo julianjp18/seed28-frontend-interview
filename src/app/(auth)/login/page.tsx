@@ -29,7 +29,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white p-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#F5F5F5] p-4">
       <form
         onSubmit={handleSubmit}
         className="relative w-full max-w-sm rounded-lg border border-border bg-card p-6 shadow-sm"
@@ -47,10 +47,10 @@ export default function LoginPage() {
             aria-hidden
           >
             <div className="space-y-4">
-              <Skeleton className="h-10 w-full rounded-md" />
-              <Skeleton className="h-10 w-full rounded-md" />
+              <Skeleton className="h-10 w-full rounded-md bg-[#E0E0E0]" />
+              <Skeleton className="h-10 w-full rounded-md bg-[#E0E0E0]" />
             </div>
-            <Skeleton className="mt-6 h-10 w-full rounded-md" />
+            <Skeleton className="mt-6 h-10 w-full rounded-md bg-[#E0E0E0]" />
           </div>
         ) : (
           <>
